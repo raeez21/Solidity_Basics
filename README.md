@@ -28,7 +28,30 @@ The [ExampleMapping.sol](contracts/ExampleMapping.sol) and [ExampleMapping2.sol]
 The [StructAndChildContracts.sol](contracts/StructAndChildContracts.sol) file shows implementation of logically grouping variables using Struct and Child Contracts. In latter implementation, the main contract{Wallet) creates a new child SC (PaymentsSC) at a new address. This can be complex and takes more gas.  This is simplified using Struct implementation. A struct is used to define new datatypes and group several variables together. 
 
 
-The [MappingsAndStruct.sol](contracts/MappingsAndStruct.sol) file, shows the usage of struct and mappings together. It defines a wallet as mapping from address to Balances(struct). This mapping stores address of an account as key and Balances struct as value. The Balance struct has several fields like totalBalance, numDeposits, a mapping called deposits, a mapping called withdrawals etc. This wallet has different functions like deposit, withdraw, checkbalance etc. 
+The [MappingsAndStruct.sol](contracts/MappingsAndStruct.sol) file, shows the usage of struct and mappings together. It defines a wallet as mapping from address to Balances(struct). This mapping stores address of an account as key and Balances struct as value. The Balance struct has several fields like totalBalance, numDeposits, a mapping called deposits, a mapping called withdrawals etc. This wallet has different functions like deposit, withdraw, checkbalance etc.
+
+## [ExampleRequireAssert.sol](contracts/ExampleRequireAssert.sol)
+Has a contract which has 2 functions that explains usage of require and assert stmts in exception handling in Solidity. Require is for input validation, it uses up gas until that point when it hits require and then returns rest of gas. Assert is for checking for invariance (states taht our contract or variables should never reach). Assert goes internally to a Panic opcode, it uses all available gas. It doesn't throw an exception, it just stops the execution.
+Both require and assert rollsback all operations in that transaction.
+
+## [ExampleTryCatch.sol](contracts/ExampleTryCatch.sol)
+This is a file to show usage of try catch in Solidity.
+1. 'Require' reverts with an exception called 'Error'
+2. 'Assert' reverts with an exception called 'Panic'
+3. We can also have custom exceptions using `error NotAllowed(string);` and revert using `revert NotAllowed("Not allowed by you");`
+
+## [ContractsCall.sol](contracts/ContractsCall.sol)
+This shows different ways in which we can call a function (deposit()) of a contract SC1 from another contract SC2.
+1. In method 1, we creaetd a SC1 object in SC2 and simply called the deposit() along with value and gas.
+2. In method 2, we we used low level call() function after encoding the function signature as payload.
+3. In method3, we dont know func signature, so create a fallback func in SC1 and then call deposit() from there. In SC2, when we use call() along with epmty payment, it fallsback to receive func of SC1
+
+## [SendTransfer.sol](contracts/SendTransfer.sol)
+Progamr to show difference between Send and Transfer. Transfer throws an exception when transfer fails. Send returns a bool. We need to check this value for fail/success
+
+**ALWAYS CHECK RETURN VALUE OF LOW LEVEL FUNCTIONS LIKE SEND() AND CALL()** 
+
+
 
 
 ## The Blockchain messenger
