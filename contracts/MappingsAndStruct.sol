@@ -14,6 +14,11 @@ contract MappingAndStruct{
         mapping(uint => Transaction) withdrawals;
     }
     mapping(address=> Balance) public balances;
+
+    function getBalance(address _addr) public view returns(uint){
+        return balances[_addr].totalBalance;
+    } 
+
     function depositMoney() public payable{
         balances[msg.sender].totalBalance += msg.value;
 
