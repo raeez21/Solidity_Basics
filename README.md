@@ -47,7 +47,8 @@ This shows different ways in which we can call a function (deposit()) of a contr
 3. In method3, we dont know func signature, so create a fallback func in SC1 and then call deposit() from there. In SC2, when we use call() along with epmty payment, it fallsback to receive func of SC1
 
 ## [SendTransfer.sol](contracts/SendTransfer.sol)
-Progamr to show difference between Send and Transfer. Transfer throws an exception when transfer fails. Send returns a bool. We need to check this value for fail/success
+Progamr to show difference between Send and Transfer. Transfer throws an exception when transfer fails. Send returns a bool. We need to check this value for fail/success.
+[Refer this link](https://ethereum-blockchain-developer.com/2022-04-smart-wallet/07-low-level-calls-in-depth/#difference-send-and-transfer)
 
 **ALWAYS CHECK RETURN VALUE OF LOW LEVEL FUNCTIONS LIKE SEND() AND CALL()** 
 
