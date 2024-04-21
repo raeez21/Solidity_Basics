@@ -54,6 +54,15 @@ Progamr to show difference between Send and Transfer. Transfer throws an excepti
 
 
 
+## Modifiers and inheritance
+
+The [ModifiersAndInheritance.sol](contracts/ModifiersAndInheritance.sol) and [Ownable.sol](contracts/Ownable.sol) shows modifiers and inheritance in Solidity. The `Ownable.sol` defines a contract which has a modifier called `onlyOwner`. This modifer checks if message sender is the owner. This SC is then imported in `ModifiersAndInheritance.sol` and calls the `onlyOwner` modifier in function defenition (near to visibility specifier). 
+
+##Reserved Keywords
+The [SampleUnits.sol](contracts/SampleUnits.sol) has some usage of reserved keywords and units like `ether`, `days` etc.
+
+
+
 
 ## The Blockchain messenger
 This [file](contracts/TheBlockchainMessenger.sol) is a project implementation of a basic Blockchain Messenger. It stores a string message on the blockchain, which is readable for everyone but only writable for the person (or account) that deployed this smart contract. It also has a counter variable which shows how many times that message was updated.
